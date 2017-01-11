@@ -10,29 +10,22 @@ let LoginWindow = React.createClass({
 
         let loginData = {};
 
-        loginData.login = (this.refs.login.value);
-        loginData.password = (this.refs.password.value);
+        loginData.Username = (this.refs.login.value);
+        loginData.Password = (this.refs.password.value);
 
         this.setState({buttonImgUrl: './img/loginButLoad.png'});
-
-        $.post('http://localhost:8080/login', loginData, (result) => {
-            if(result.Auth === 'Denied') {
+        $.post('http://localhost:8080/login', loginData, (response) => {
+            if(response.Auth === 'Denied') {
                 this.setState({
                     isValid: 'Denied',
                     buttonImgUrl: './img/loginBut.png'
-
-                })
-            } else if (result.Auth === 'Logged') {
+                });
+            } else if (response.Auth === 'Logged') {
                 this.setState({
                     isValid: 'Success'
-                })
+                });
             }
-        });
-        ///
-        for(let i = 0; i < 1000000000; i++);
-        this.setState({isValid: 'Denied',
-        buttonImgUrl: './img/loginBut.png'});
-        ///
+        }).fail(() => this.setState({buttonImgUrl: './img/loginBut.png'}));
     },
 
     render: function() {
