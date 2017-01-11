@@ -1,0 +1,25 @@
+{
+  "name": "react_vacancy_test_by_levada_denys",
+  "version": "1.0.0",
+  "description": "![geeks](https://github.com/geeksteam/VacancyFrontendTest/raw/master/logo-git.png)\r <img src=\"https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg\" width=\"80\">\r <img src=\"https://react-mdl.github.io/react-mdl/react.svg\" width=\"250\">",
+  "main": "app.jsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Levada Denys",
+  "license": "ISC",
+  "bugs": {},
+  "devDependencies": {
+    "mockserver-grunt": "^1.0.33"
+  },
+  "dependencies": {
+    "grunt": "^1.0.1",
+    "jquery": "^3.1.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
+}
