@@ -4,20 +4,29 @@
   "description": "![geeks](https://github.com/geeksteam/VacancyFrontendTest/raw/master/logo-git.png)\r <img src=\"https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg\" width=\"80\">\r <img src=\"https://react-mdl.github.io/react-mdl/react.svg\" width=\"250\">",
   "main": "app.jsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --hot",
+    "build": "webpack"
   },
-  "repository": {
-    "type": "git",
-    "url": ""
+  "babel": {
+    "presets": [
+      "react",
+      "es2015"
+    ]
   },
-  "author": "Levada Denys",
-  "license": "ISC",
-  "bugs": {},
   "devDependencies": {
-    "mockserver-grunt": "^1.0.33"
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.26.1",
+    "node-sass": "^4.3.0",
+    "react-hot-loader": "^1.3.1",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
-    "grunt": "^1.0.1",
     "jquery": "^3.1.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"

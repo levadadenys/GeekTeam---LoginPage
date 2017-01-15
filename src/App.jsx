@@ -1,19 +1,31 @@
-let LoginWindow = React.createClass({
-    getInitialState: function() {
-        return {
+import React from 'react';
+import ReactDOM from 'react-dom';
+import $ from 'jquery';
+
+window.$ = $;
+
+import './main.css'
+
+class LoginWindow extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
             isValid: 'true',
             buttonImgUrl: './img/loginBut.png'
-        }
-    },
-    handleSubmit: function (e){
+        };
+        this._handleSubmit = this._handleSubmit.bind(this);
+    };
+    
+    _handleSubmit(e) {
         e.preventDefault();
 
         let loginData = {};
-
         loginData.Username = (this.refs.login.value);
         loginData.Password = (this.refs.password.value);
 
         this.setState({buttonImgUrl: './img/loginButLoad.png'});
+
         $.post('http://localhost:8080/login', JSON.stringify(loginData), (response) => {
             if(response.Auth === 'Denied') {
                 this.setState({
@@ -29,18 +41,16 @@ let LoginWindow = React.createClass({
             alert(`Error : ${error.status} ${error.responseText}`);
             this.setState({buttonImgUrl: './img/loginBut.png'});
         });
-    },
+    };
 
-    render: function() {
+    render() {
         let error = '';
         if (this.state.isValid === 'Denied') error = 'error';
         else if(this.state.isValid === 'Success') {
-            return (
-                <img id = 'success' src='./img/loginSuccessed.png'/>
-            );
+            return (<img id = 'success' src='./img/loginSuccessed.png'/>);
         };
         return (
-            <form id = 'loginForm' onSubmit={this.handleSubmit}>
+            <form id = 'loginForm' onSubmit={this._handleSubmit}>
                 <ul>
                     <li>
                         <img src='./img/logoLogin.png'/>
@@ -57,7 +67,7 @@ let LoginWindow = React.createClass({
                 </ul>
             </form>
         );
-    }
-});
+    };
+}
 
-ReactDOM.render(<LoginWindow props = {true} />, document.getElementById('loginRoot'));
+ReactDOM.render(<LoginWindow />, document.getElementById('loginRoot'));
