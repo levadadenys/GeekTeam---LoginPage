@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
-
-window.$ = $;
+import axios from 'axios';
 
 import './main.css'
 
@@ -26,7 +24,10 @@ class LoginWindow extends React.Component {
 
         this.setState({buttonImgUrl: './img/loginButLoad.png'});
 
-        $.post('http://localhost:8080/login', JSON.stringify(loginData), (response) => {
+        axios.post('/login', {
+            Username: this.refs.login.value,
+            Password: this.refs.password.value
+        }).then((response) => {
             if(response.Auth === 'Denied') {
                 this.setState({
                     isValid: 'Denied',
@@ -37,8 +38,9 @@ class LoginWindow extends React.Component {
                     isValid: 'Success'
                 });
             }
-        }).fail((error) => {
-            alert(`Error : ${error.status} ${error.responseText}`);
+
+        }).catch((error) => {
+            alert(error);
             this.setState({buttonImgUrl: './img/loginBut.png'});
         });
     };
