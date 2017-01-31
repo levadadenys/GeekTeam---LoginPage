@@ -72,4 +72,15 @@ class LoginWindow extends React.Component {
     };
 }
 
-ReactDOM.render(<LoginWindow />, document.getElementById('loginRoot'));
+class LoginContainer extends React.Component {
+    
+    render () {
+        return (
+            <div id = 'LoginContainer'>
+                <LoginWindow />
+            </div>
+        );
+    }
+}
+
+ReactDOM.render(<LoginContainer />, document.getElementById('loginRoot'));
